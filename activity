@@ -1,0 +1,64 @@
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MovieAppActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_movie_app);
+
+        setupActionBar();
+        fetchMovieData();
+        setupUI();
+        setupListeners();
+    }
+
+    private void setupActionBar() {
+        // 配置动作栏的样式和按钮（如果需要）
+    }
+
+    private void fetchMovieData() {
+        // 通过API调用获取电影数据（如果需要）
+    }
+
+    private void setupUI() {
+        Button playButton = findViewById(R.id.play_button);
+        final EditText searchEditText = findViewById(R.id.search_edittext);
+
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String movieUrl = "https://example.com/movie.mp4"; // 假设这是电影的URL
+                playMovie(movieUrl);
+            }
+        });
+
+        Button searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = searchEditText.getText().toString();
+                searchMovie(query);
+            }
+        });
+    }
+
+    private void setupListeners() {
+        // 设置按钮点击监听器、列表项点击监听器等（如果需要）
+    }
+
+    private void playMovie(String movieUrl) {
+        // 播放电影的逻辑
+        Toast.makeText(this, "正在播放电影：" + movieUrl, Toast.LENGTH_SHORT).show();
+    }
+
+    private void searchMovie(String query) {
+        // 搜索电影的逻辑
+        Toast.makeText(this, "正在搜索电影：" + query, Toast.LENGTH_SHORT).show();
+    }
+}
